@@ -15,15 +15,31 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    // CREATE
     @PostMapping("/")
     public Customer saveCustomer(@RequestBody Customer customer) {
-        log.info("Inside saveCustomer method of CustomerController");
+        log.info("create a new customer");
         return customerService.saveCustomer(customer);
     }
 
+    // READ ALL
+    @GetMapping("/")
+    public Customer getAllCustomers(){
+        log.info("get all customers");
+        return customerService.findAllCustomers();
+    }
+
+    // READ ONE
     @GetMapping("/{id}")
     public Customer findCustomerById (@PathVariable("id") Long customerId) {
-        log.info("Inside findCustomerById method of DepartmentController");
+        log.info("get customer by id");
         return customerService.findCustomerById(customerId);
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public Customer updateCustomer (@RequestBody Customer customer, @RequestBody Long customerId){
+        log.info("customer updated");
+        return customerService.saveCustomer(customer);
     }
 }

@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class CustomerService {
@@ -21,5 +23,10 @@ public class CustomerService {
     public Customer findCustomerById(Long customerId) {
         log.info("Inside saveCustomer of CustomerService");
         return customerRepository.findByCustomerId(customerId);
+    }
+
+    public Customer findAllCustomers() {
+        log.info("Inside saveCustomer of CustomerService");
+        return customerRepository.findAllCustomers();
     }
 }
