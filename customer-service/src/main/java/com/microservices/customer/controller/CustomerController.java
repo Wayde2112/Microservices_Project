@@ -1,11 +1,13 @@
 package com.microservices.customer.controller;
 
 import com.microservices.customer.entity.Customer;
-import com.microservices.customer.repository.CustomerRepository;
 import com.microservices.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customers")
@@ -24,14 +26,14 @@ public class CustomerController {
 
     // READ ALL
     @GetMapping("/")
-    public Customer getAllCustomers(){
+    public List<Customer> getAllCustomers(){
         log.info("get all customers");
         return customerService.findAllCustomers();
     }
 
     // READ ONE
     @GetMapping("/{id}")
-    public Customer findCustomerById (@PathVariable("id") Long customerId) {
+    public Optional<Customer> findCustomerById (@PathVariable("id") Long customerId) {
         log.info("get customer by id");
         return customerService.findCustomerById(customerId);
     }
@@ -41,5 +43,11 @@ public class CustomerController {
     public Customer updateCustomer (@RequestBody Customer customer, @RequestBody Long customerId){
         log.info("customer updated");
         return customerService.saveCustomer(customer);
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public void deleteCustomerById (@PathVariable("id") Long customerId) {
+        customerService.deleteCustomerById(customerId);
     }
 }

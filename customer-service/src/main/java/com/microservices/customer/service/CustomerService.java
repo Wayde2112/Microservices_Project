@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -20,13 +21,20 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Customer findCustomerById(Long customerId) {
+    public Optional<Customer> findCustomerById(Long customerId) {
         log.info("Inside saveCustomer of CustomerService");
-        return customerRepository.findByCustomerId(customerId);
+        return customerRepository.findById(customerId);
     }
 
-    public Customer findAllCustomers() {
+    public List<Customer> findAllCustomers() {
         log.info("Inside saveCustomer of CustomerService");
-        return customerRepository.findAllCustomers();
+        return customerRepository.findAll();
     }
+
+    public void deleteCustomerById(Long customerId){
+        log.info("Inside deleteCustomerById of CustomerService");
+        customerRepository.deleteById(customerId);
+    };
+
+
 }
