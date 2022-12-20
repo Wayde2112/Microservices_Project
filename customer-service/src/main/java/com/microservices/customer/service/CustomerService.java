@@ -22,12 +22,12 @@ public class CustomerService {
     }
 
     public Optional<Customer> findCustomerById(Long customerId) {
-        log.info("Inside saveCustomer of CustomerService");
+        log.info("Inside findCustomerById of CustomerService");
         return customerRepository.findById(customerId);
     }
 
     public List<Customer> findAllCustomers() {
-        log.info("Inside saveCustomer of CustomerService");
+        log.info("Inside findAllCustomer of CustomerService");
         return customerRepository.findAll();
     }
 
