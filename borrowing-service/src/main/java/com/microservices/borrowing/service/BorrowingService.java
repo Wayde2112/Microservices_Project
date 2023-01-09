@@ -1,6 +1,7 @@
 package com.microservices.borrowing.service;
 
 import com.microservices.borrowing.entity.Borrowing;
+import com.microservices.borrowing.exceptions.BorrowingNotFoundException;
 import com.microservices.borrowing.repository.BorrowingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,22 @@ public class BorrowingService {
         return borrowingRepository.save(borrowing);
     }
 
-    public Optional<Borrowing> findBorrowingById(Long customerId) {
-        log.info("Inside findBorrowingById of BorrowingService");
-        return borrowingRepository.findById(customerId);
+    public Borrowing findBorrowingById(Long customerId) {
+        try{
+            log.info("Inside findBorrowingById of BorrowingService");
+            Optional <Borrowing> BorrowingOpt = borrowingRepository.findById(customerId);
+            if(BorrowingOpt.isPresent()){
+                return BorrowingOpt.get();
+            }else {
+                BorrowingNotFoundException exception = new BorrowingNotFoundException();
+                log.info("Exception: "+exception.getMessage());
+                throw exception;
+            }
+        }catch (Exception e){
+            BorrowingNotFoundException exception = new BorrowingNotFoundException();
+            log.info("Exception: "+exception.getMessage());
+            throw exception;
+        }
     }
 
     public List<Borrowing> findAllBorrowing() {
