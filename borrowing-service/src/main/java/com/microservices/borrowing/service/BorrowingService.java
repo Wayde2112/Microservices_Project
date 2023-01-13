@@ -2,6 +2,7 @@ package com.microservices.borrowing.service;
 
 import com.microservices.borrowing.entity.Borrowing;
 import com.microservices.borrowing.exceptions.BorrowingNotFoundException;
+import com.microservices.borrowing.exceptions.BorrowingServerErrorException;
 import com.microservices.borrowing.repository.BorrowingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,20 @@ public class BorrowingService {
 
     @Autowired
     private BorrowingRepository borrowingRepository;
+    private Long borrowingId;
 
     public Borrowing saveBorrowing(Borrowing borrowing) {
-        log.info("Inside saveBorrowing of BorrowingService");
-        return borrowingRepository.save(borrowing);
+        try{
+            log.info("Inside saveBorrowing of BorrowingService");
+            return borrowingRepository.save(borrowing);
+        }catch (Exception e){
+            BorrowingServerErrorException exception = new BorrowingServerErrorException();
+            log.error("Exception: "+exception.getMessage());
+            throw exception;
+        }
     }
 
-    public Borrowing findBorrowingById(Long customerId) {
+    public Borrowing findBorrowingById(String customerId) {
         try{
             log.info("Inside findBorrowingById of BorrowingService");
             Optional <Borrowing> BorrowingOpt = borrowingRepository.findById(customerId);
@@ -30,24 +38,36 @@ public class BorrowingService {
                 return BorrowingOpt.get();
             }else {
                 BorrowingNotFoundException exception = new BorrowingNotFoundException();
-                log.info("Exception: "+exception.getMessage());
+                log.error("Exception: "+exception.getMessage());
                 throw exception;
             }
         }catch (Exception e){
-            BorrowingNotFoundException exception = new BorrowingNotFoundException();
-            log.info("Exception: "+exception.getMessage());
+            BorrowingServerErrorException exception = new BorrowingServerErrorException();
+            log.error("Exception: "+exception.getMessage());
             throw exception;
         }
     }
 
     public List<Borrowing> findAllBorrowing() {
-        log.info("Inside findAllBorrowing of BorrowingService");
-        return borrowingRepository.findAll();
+        try {
+            log.info("Inside findAllBorrowing of BorrowingService");
+            return borrowingRepository.findAll();
+        }catch (Exception e){
+            BorrowingServerErrorException exception = new BorrowingServerErrorException();
+            log.error("Exception: "+exception.getMessage());
+            throw exception;
+        }
     }
 
-    public void deleteBorrowingById(Long borrowingId){
-        log.info("Inside deleteBorrowingById of BorrowingService");
-        borrowingRepository.deleteById(borrowingId);
+    public void deleteBorrowingById(String borrowingId){
+        try{
+            log.info("Inside deleteBorrowingById of BorrowingService");
+            borrowingRepository.deleteById(borrowingId);
+        }catch (Exception e){
+            BorrowingServerErrorException exception = new BorrowingServerErrorException();
+            log.error("Exception: "+exception.getMessage());
+            throw exception;
+        }
     }
 
 
