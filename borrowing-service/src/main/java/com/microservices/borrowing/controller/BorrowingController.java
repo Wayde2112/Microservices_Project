@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/borrowing")
+@RequestMapping("api")
 @Slf4j
 public class BorrowingController {
 
@@ -18,36 +18,37 @@ public class BorrowingController {
     private BorrowingService borrowingService;
 
     // CREATE
-    @PostMapping("/")
+    @PostMapping("borrowing")
     public Borrowing saveBorrowing(@RequestBody Borrowing borrowing) {
         log.info("create a new customer");
+        System.out.println(borrowing);
         return borrowingService.saveBorrowing(borrowing);
     }
 
     // READ ALL
-    @GetMapping("/")
+    @GetMapping("borrowing")
     public List<Borrowing> getAllBorrowing(){
         log.info("get all borrowings");
         return borrowingService.findAllBorrowing();
     }
 
     // READ ONE
-    @GetMapping("/{id}")
-    public Optional<Borrowing> findBorrowingById (@PathVariable("id") Long borrowingId) {
+    @GetMapping("borrowing/{id}")
+    public Optional<Borrowing> findBorrowingById (@PathVariable("id") String borrowingId) {
         log.info("get borrowing by id");
-        return borrowingService.findBorrowingById(borrowingId);
+        return Optional.ofNullable(borrowingService.findBorrowingById(borrowingId));
     }
 
     // UPDATE
-    @PutMapping("/{id}")
-    public Borrowing updateBorrowing (@RequestBody Borrowing borrowing, @RequestBody Long borrowingId){
+    @PutMapping("borrowing/{id}")
+    public Borrowing updateBorrowing (@RequestBody Borrowing borrowing, @PathVariable("id") String borrowingId){
         log.info("borrowing updated");
         return borrowingService.saveBorrowing(borrowing);
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
-    public void deleteBorrowingById (@PathVariable("id") Long borrowingId) {
+    @DeleteMapping("borrowing/{id}")
+    public void deleteBorrowingById (@PathVariable("id") String borrowingId) {
         log.info("borrowing deleted");
         borrowingService.deleteBorrowingById(borrowingId);
     }
