@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Add hosts to /etc/hosts
       run: |
-        sudo echo "127.0.0.1 customer-mongodb order-postgres kafka" | sudo tee -a /etc/hosts
+        sudo echo "127.0.0.1 customer-postgres borrowing-mongodb kafka" | sudo tee -a /etc/hosts
     - name: Get branch
       id: get_branch
       run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
@@ -35,6 +35,34 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ secrets.DOCKER_USERNAME }}/borrowing-service
+        tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
+        build_args: |
+          TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
+
+  build-customer:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: customer-service
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add hosts to /etc/hosts
+      run: |
+        sudo echo "127.0.0.1 customer-postgres kafka" | sudo tee -a /etc/hosts
+    - name: Get branch
+      id: get_branch
+      run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
+    - name: Get the commit SHA
+      id: get_commit_sha
+      run: echo ::set-output name=COMMIT_SHA::$(git rev-parse --short "$GITHUB_SHA")
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v1.1.0 
+      with:
+        path: customer-service/
+        dockerfile: customer-service/Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: ${{ secrets.DOCKER_USERNAME }}/customer-service
         tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build_args: |
           TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
