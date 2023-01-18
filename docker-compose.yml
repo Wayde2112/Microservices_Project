@@ -11,7 +11,7 @@ services:
 
   customer-postgres:
     image: postgres:latest
-    container_name: order-postgres
+    container_name: customer-postgres
     ports:
       - "5432:5432"
     restart: always
