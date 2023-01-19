@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: book-service
+        working-directory: books-service
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -81,9 +81,12 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+      - uses: subosito/flutter-action@v2
+        with:
+        flutter-version: '2.10.0'
     - name: Add hosts to /etc/hosts
       run: |
-        sudo echo "127.0.0.1 book-postgres kafka" | sudo tee -a /etc/hosts
+        sudo echo "127.0.0.1 books-postgres kafka" | sudo tee -a /etc/hosts
     - name: Get branch
       id: get_branch
       run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
@@ -93,11 +96,11 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v1.1.0 
       with:
-        path: book-service/
-        dockerfile: book-service/Dockerfile
+        path: books-service/
+        dockerfile: books-service/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ secrets.DOCKER_USERNAME }}/book-service
+        repository: ${{ secrets.DOCKER_USERNAME }}/books-service
         tags: ${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}, latest
         build_args: |
           TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
