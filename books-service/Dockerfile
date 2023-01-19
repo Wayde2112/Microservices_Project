@@ -3,9 +3,8 @@ ADD ./src /app/books-service/src
 
 WORKDIR /app
 
-COPY package.json /app/books-service/
-COPY package-lock.json /app/books-service/
+COPY package*.json /app/books-service/
 
 RUN npm install /app/books-service/
 
-CMD ["npm run dev"]
+CMD ["npm", "run", "dev"]
