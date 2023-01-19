@@ -8,4 +8,4 @@ COPY package-lock.json /app/books-service/
 
 RUN npm install /app/books-service/
 
-CMD ["npm", "run dev"]
+CMD ["npm run dev"]

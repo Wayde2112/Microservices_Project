@@ -32,8 +32,8 @@ services:
 
   #BOOK MICROSERVICE
   book-service:
-    image: leonardocionchi/book-service:latest
-    container_name: book-service
+    image: leonardocionchi/books-service:latest
+    container_name: books-service
     ports:
       - "8104:3000"
     depends_on:
@@ -43,7 +43,7 @@ services:
     image: postgres:latest
     container_name: book-postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     restart: always
     environment:
       POSTGRES_USER: postgres
