@@ -1,5 +1,23 @@
 import { getConnection, sql, queries } from '../database'
 
+// Database initialization
+export const dbInitialization = async (req, res) => {
+  
+  var time = new Date().getTime()
+  
+  try {
+    const pool = await getConnection()
+    const result = await pool
+    .request()
+    .query(queries.dbInitialization) 
+
+    console.log("dbInitialization successfully done " + (new Date().getTime() - time) + " ms")   
+  } catch (error) {
+    res.status(500)
+    res.send(error.message)
+  }
+
+}
 
 // Get all books
 export const getBooks = async (req, res) => {

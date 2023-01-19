@@ -1,8 +1,11 @@
 import {Router} from "express";
 
-import {createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller'
+import {dbInitialization, createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller'
 
 const router = Router()
+
+// Database initialization
+router.get('/init', dbInitialization)
 
 // Get all books
 router.get('/books', getBooks)
