@@ -74,16 +74,15 @@ jobs:
         working-directory: books-service
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: '19.x'
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-      - uses: subosito/flutter-action@v2
-        with:
-        flutter-version: '2.10.0'
+    - uses: subosito/flutter-action@v4
+      with:
+      flutter-version: '2.10.0'
     - name: Add hosts to /etc/hosts
       run: |
         sudo echo "127.0.0.1 books-postgres kafka" | sudo tee -a /etc/hosts
