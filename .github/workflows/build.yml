@@ -74,6 +74,13 @@ jobs:
         working-directory: book-service
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '19.x'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
     - name: Add hosts to /etc/hosts
       run: |
         sudo echo "127.0.0.1 book-postgres kafka" | sudo tee -a /etc/hosts
