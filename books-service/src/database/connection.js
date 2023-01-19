@@ -1,11 +1,12 @@
-import sql from 'mssql';
+import sql from 'pg';
 
 // Credenziali database
 const dbSettings = {
-  user: 'stefanito', 
-  password: 'Stefanito',
-  server: 'localhost',
-  database: 'BooksDB',
+  user: 'postgres', 
+  password: 'postgres',
+  host: 'localhost',
+  database: 'book',
+  port: 5432,
   options: {
     encrypt: true,
     trustServerCertificate: true,
