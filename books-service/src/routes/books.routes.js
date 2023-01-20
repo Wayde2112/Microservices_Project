@@ -5,7 +5,7 @@ import {dbInitialization, createBook, getBookById, getBooks, deleteBookById, upd
 const router = Router()
 
 // Database initialization
-router.get('/init', dbInitialization)
+router.post('/init', dbInitialization)
 
 // Get all books
 router.get('/books', getBooks)
