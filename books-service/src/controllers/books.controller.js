@@ -1,4 +1,5 @@
-import { getConnection, sql, queries } from '../database'
+import { getConnection, sql } from '../database/connection.js'
+import { queries } from '../database/querys.js'
 
 // Database initialization
 export const dbInitialization = async (req, res) => {

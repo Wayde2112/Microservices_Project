@@ -1,6 +1,6 @@
 import {Router} from "express";
 
-import {dbInitialization, createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller'
+import {dbInitialization, createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller.js'
 
 const router = Router()
 

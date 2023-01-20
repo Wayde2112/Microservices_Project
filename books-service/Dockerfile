@@ -1,11 +1,8 @@
 FROM node:19.1.0-alpine
-ADD ./src /app/books-service/src
-
 WORKDIR /app
 
-COPY package.json /app/books-service/
-COPY package-lock.json /app/books-service/
+COPY package*.json ./
+COPY ./src ./src
 
-RUN npm install /app/books-service/
-
-ENTRYPOINT ["npm", "start"]
+RUN [ "npm" , "ci" ]
+CMD [ "npm" , "start" ]

@@ -1,7 +1,7 @@
 import express from 'express'
-import config from './config'
+import config from './config.js'
 
-import booksRoutes from './routes/books.routes'
+import booksRoutes from './routes/books.routes.js'
 
 const app = express()
 
