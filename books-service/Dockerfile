@@ -7,4 +7,4 @@ COPY package*.json /app/books-service/
 
 RUN npm install /app/books-service/
 
-CMD ["npm", "run", "dev"]
+RUN npm run dev /app/books-service
