@@ -8,4 +8,4 @@ COPY package-lock.json /app/books-service/
 
 RUN npm install /app/books-service/
 
-ENTRYPOINT ["npm", "start"] /app/books-service/
+ENTRYPOINT ["npm", "start"]
