@@ -6,7 +6,7 @@ const dbSettings = {
   password: 'postgres',
   host: 'localhost',
   database: 'book',
-  port: 5432,
+  port: 5433,
   options: {
     encrypt: true,
     trustServerCertificate: true,
