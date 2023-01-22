@@ -1,11 +1,8 @@
 import {Router} from "express";
 
-import {dbInitialization, createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller.js'
+import {correctDB, createBook, getBookById, getBooks, deleteBookById, updateBookById} from '../controllers/books.controller.js'
 
 const router = Router()
-
-// Database initialization
-router.post('/init', dbInitialization)
 
 // Get all books
 router.get('/books', getBooks)

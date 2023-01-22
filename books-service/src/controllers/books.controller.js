@@ -1,24 +1,5 @@
-import { getConnection, sql } from '../database/connection.js'
+import { connection } from '../database/connectionmysql.js'
 import { queries } from '../database/querys.js'
-
-// Database initialization
-export const dbInitialization = async (req, res) => {
-  
-  var time = new Date().getTime()
-  
-  try {
-    const pool = await getConnection()
-    const result = await pool
-    .request()
-    .query(queries.dbInitialization) 
-
-    console.log("dbInitialization successfully done " + (new Date().getTime() - time) + " ms")   
-  } catch (error) {
-    res.status(500)
-    res.send(error.message)
-  }
-
-}
 
 // Get all books
 export const getBooks = async (req, res) => {
@@ -26,12 +7,11 @@ export const getBooks = async (req, res) => {
   var time = new Date().getTime()
   
   try {
-    const pool = await getConnection()
-    const result = await pool
-    .request()
+    // const pool = await getConnection()
+    const result = connection
     .query(queries.getAllBooks)
 
-    res.json(result.recordset) 
+    res.json(result.recordset)
 
     console.log("GetBooks successfully done " + (new Date().getTime() - time) + " ms")   
   } catch (error) {
@@ -49,8 +29,8 @@ export const getBookById = async (req, res) => {
   try {
     const { id } = req.params
   
-    const pool = await getConnection()
-    const result = await pool
+    // const pool = await getConnection()
+    const result = connection
       .request()
       .input('Id', id)
       .query(queries.getBookById)
@@ -77,9 +57,9 @@ export const createBook = async (req, res) => {
   }
 
   try {
-    const pool = await getConnection()
+    // const pool = await getConnection()
     
-    await pool.request()
+    const result = connection.request()
       .input("Name", sql.VarChar, Name)
       .input("Author", sql.VarChar, Author)
       .query(queries.createNewBook)
@@ -100,8 +80,8 @@ export const deleteBookById = async (req, res) => {
   var time = new Date().getTime()
   const { id } = req.params
 
-  const pool = await getConnection()
-  const result = await pool
+  // const pool = await getConnection()
+  const result = connection
     .request()
     .input('Id', id)
     .query(queries.deleteBookById)
@@ -121,8 +101,8 @@ export const updateBookById = async (req, res) => {
     return res.status(400).json({ msg: 'Bad request. Please fill all fields' })
   }
 
-  const pool = await getConnection()
-  await pool.request()
+  // const pool = await getConnection()
+  connection.request()
       .input("Id", sql.Int, id)
       .input("Name", sql.VarChar, Name)
       .input("Author", sql.VarChar, Author)

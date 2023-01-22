@@ -1,7 +1,7 @@
 services:
   #CUSTOMER MICROSERVICE
   customer-service:
-    image: leonardocionchi/customer-service:latest
+    image: wayde2112/customer-service:latest
     #build:
       #context: ./customer-service
     container_name: customer-service
@@ -23,7 +23,7 @@ services:
 
   #BORROWING MICROSERVICE
   borrowing-service:
-    image: leonardocionchi/borrowing-service:latest
+    image: wayde2112/borrowing-service:latest
     container_name: borrowing-service
     ports:
       - "8103:8102"
@@ -32,23 +32,25 @@ services:
 
   #BOOK MICROSERVICE
   book-service:
-    image: leonardocionchi/books-service:latest
+    image: book-service:latest
     container_name: books-service
     ports:
       - "8104:3000"
     depends_on:
-      - book-postgres
+      - book-mysql
 
-  book-postgres:
-    image: postgres:latest
-    container_name: book-postgres
+  book-mysql:
+    image: mysql:latest
+    container_name: book-mysql
     ports:
-      - "5433:5432"
+      - "3306:3306"
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: book
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: book
+      MYSQL_ROOT_USER: root
 
   #KAFKA
 # zookeeper:

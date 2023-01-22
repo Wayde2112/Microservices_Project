@@ -17,6 +17,7 @@
     "microtime": "^3.1.1",
     "morgan": "^1.10.0",
     "mssql": "^9.0.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "postgresql": "^0.0.1"
