@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 services:
   #CUSTOMER MICROSERVICE
   customer-service:
@@ -55,10 +50,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: book
 
-<<<<<<< Updated upstream
-    
-
-=======
   #KAFKA
 # zookeeper:
 #   container_name: zookeeper
@@ -76,6 +67,3 @@ services:
 #   environment:
 #     - KAFKA_ADVERTISED_HOST_NAME=kafka
 #     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-
->>>>>>> Stashed changes
->>>>>>> Stashed changes
