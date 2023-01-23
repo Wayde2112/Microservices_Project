@@ -82,7 +82,7 @@ Evaluation criteria:
 |--------------------------	|------------------------------------	|----------------------------------------------------------	|---------------------------	|
 | Business<br>Requirements 	| Manage the books                   	| Manage the orders                                        	| Manage the customers      	|
 | Data Entities            	| Books                              	| Borrows                                                  	| Customers                 	|
-| Data<br>Autonomy         	| None                               	| Related to book by ID Related to customer by ID 	| None                      	|
+| Data<br>Autonomy         	| None                               	| Related to book by ID <br>Related to customer by ID 	| None                      	|
 
 ## Project Tree
 
