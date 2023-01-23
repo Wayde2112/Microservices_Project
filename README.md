@@ -41,6 +41,7 @@ Evaluation criteria:
 **Database:** MySQL
 
 **Logging:** Javascript Log
+**----------------------------------------------------------------------------------------------------------------**
 ### Customers Microservices
 
 **Programming Language:** Java with Spring
@@ -48,6 +49,7 @@ Evaluation criteria:
 **Database:** PostgreSQL
 
 **Logging:** Slf4j
+**----------------------------------------------------------------------------------------------------------------**
 ### Borrowing Microservices
 
 **Programming Language:** Java with Spring
@@ -59,6 +61,7 @@ Evaluation criteria:
 **Testing:** JUnit
 
 **Testing Database:** MockMVC
+**----------------------------------------------------------------------------------------------------------------**
 ### Notifications Microservices
 
 **Programming Language:** Java with Spring
