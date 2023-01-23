@@ -1,0 +1,71 @@
+services:
+  #CUSTOMER MICROSERVICE
+  customer-service:
+    image: wayde2112/customer-service:latest
+    #build:
+      #context: ./customer-service
+    container_name: customer-service
+    ports:
+      - "8102:9010"
+    depends_on:
+      - customer-postgres
+
+  customer-postgres:
+    image: postgres:latest
+    container_name: customer-postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: customer
+
+  #BORROWING MICROSERVICE
+  borrowing-service:
+    image: wayde2112/borrowing-service:latest
+    container_name: borrowing-service
+    ports:
+      - "8103:8102"
+    environment:
+      - MONGO_URI=mongodb+srv://MongoDB:MongoDB@microservices.crf2stj.mongodb.net/BorrowingDB?retryWrites=true&w=majority
+
+  #BOOK MICROSERVICE
+  book-service:
+    image: wayde2112/books-service:latest
+    container_name: books-service
+    ports:
+      - "8104:3000"
+    depends_on:
+      - book-mysql
+
+  book-mysql:
+    image: mysql:latest
+    container_name: book-mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: book
+      MYSQL_ROOT_USER: root
+
+  #KAFKA
+# zookeeper:
+#   container_name: zookeeper
+#   image: bitnami/zookeeper
+#   ports:
+#     - 2181:2181
+#     
+# kafka:
+#   container_name: kafka
+#   image: bitnami/kafka
+#   ports:
+#   - 9092:9092
+#   volumes:
+#   - .data/kafka:/var/run/docker.sock
+#   environment:
+#     - KAFKA_ADVERTISED_HOST_NAME=kafka
+#     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181

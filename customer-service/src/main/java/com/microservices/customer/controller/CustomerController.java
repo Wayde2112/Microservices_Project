@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("api")
 @Slf4j
 public class CustomerController {
 
@@ -18,35 +18,35 @@ public class CustomerController {
     private CustomerService customerService;
 
     // CREATE
-    @PostMapping("/")
+    @PostMapping("customers")
     public Customer saveCustomer(@RequestBody Customer customer) {
         log.info("create a new customer");
         return customerService.saveCustomer(customer);
     }
 
     // READ ALL
-    @GetMapping("/")
+    @GetMapping("customers")
     public List<Customer> getAllCustomers(){
         log.info("get all customers");
         return customerService.findAllCustomers();
     }
 
     // READ ONE
-    @GetMapping("/{id}")
+    @GetMapping("customers/{id}")
     public Optional<Customer> findCustomerById (@PathVariable("id") Long customerId) {
         log.info("get customer by id");
         return customerService.findCustomerById(customerId);
     }
 
     // UPDATE
-    @PutMapping("/{id}")
+    @PutMapping("customers/{id}")
     public Customer updateCustomer (@RequestBody Customer customer, @RequestBody Long customerId){
         log.info("customer updated");
         return customerService.saveCustomer(customer);
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
+    @DeleteMapping("customers/{id}")
     public void deleteCustomerById (@PathVariable("id") Long customerId) {
         customerService.deleteCustomerById(customerId);
     }

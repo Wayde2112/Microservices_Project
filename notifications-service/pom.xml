@@ -12,7 +12,7 @@
 	<artifactId>notifications</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>notifications</name>
-	<description>Demo project for Spring Boot</description>
+	<description>notifications microservices (apache camel and kafka)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -72,7 +72,12 @@
 			<artifactId>camel-restdsl-swagger-plugin</artifactId>
 			<version>3.19.0</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core-model</artifactId>
+            <version>3.19.0</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
