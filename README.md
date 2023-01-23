@@ -52,7 +52,7 @@ Evaluation criteria:
 
 **Programming Language:** Java with Spring
 
-**Database:** MongoDB
+**Database:** MongoDB Atlas
 
 **Logging:** Slf4j
 
