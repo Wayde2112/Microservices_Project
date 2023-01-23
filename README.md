@@ -248,6 +248,53 @@ docker-compose up
 Attaching to book-mysql, books-service, borrowing-service, customer-postgres, customer-service
 ```
 - Now you're ready to do all the tests
+
+## Books Microservices' endpoint
+
+
+
+#### Get all books
+
+```http
+  GET localhost:8104/books-service/books
+```
+
+#### Get one book
+
+```http
+  GET localhost:8104/books-service/books/:id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Create a new book
+
+```http
+  POST localhost:8104/books-service/books
+```
+
+#### Update one book
+
+```http
+  PUT localhost:8104/books-service/books/:id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Delete one book
+
+```http
+  DELETE localhost:8104/books-service/books/:id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
 - To remove the containers you have to run this command and automatically shut down all the instance.
 
 ```
