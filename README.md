@@ -31,7 +31,7 @@ Evaluation criteria:
 
 ## Architecture
 
-![Architecture](https://github.com/Wayde2112/Microservices_Project/blob/main/Architecture.png?raw=true)
+![Architecture](https://github.com/Wayde2112/Microservices_Project/blob/main/Microservices.drawio.png?raw=true)
 
 ## Tech Stack
 ### Books Microservices
