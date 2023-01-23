@@ -46,35 +46,35 @@ Evaluation criteria:
 
 ### Customers Microservices
 
-**Programming Language:** Java with Spring
+- **Programming Language:** Java with Spring
 
-**Database:** PostgreSQL
+- **Database:** PostgreSQL
 
-**Logging:** Slf4j
+- **Logging:** Slf4j
 
 
 
 ### Borrowing Microservices
 
-**Programming Language:** Java with Spring
+- **Programming Language:** Java with Spring
 
-**Database:** MongoDB Atlas
+- **Database:** MongoDB Atlas
 
-**Logging:** Slf4j
+- **Logging:** Slf4j
 
-**Testing:** JUnit
+- **Testing:** JUnit
 
-**Testing Database:** MockMVC
+- **Testing Database:** MockMVC
 
 
 
 ### Notifications Microservices
 
-**Programming Language:** Java with Spring
+- **Programming Language:** Java with Spring
 
-**Logging:** Slf4j
+- **Logging:** Slf4j
 
-**Notification:** Kafka
+- **Notification:** Kafka
 ## Project Tree
 
 To deploy this project run
