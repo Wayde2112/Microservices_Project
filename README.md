@@ -36,11 +36,11 @@ Evaluation criteria:
 ## Tech Stack
 ### Books Microservices
 
-**Programming Language:** NodeJS with Express & Babel
+- **Programming Language:** NodeJS with Express & Babel
 
-**Database:** MySQL
+- **Database:** MySQL
 
-**Logging:** Javascript Log
+- **Logging:** Javascript Log
 
 
 
