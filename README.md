@@ -55,6 +55,10 @@ Evaluation criteria:
 **Database:** MongoDB
 
 **Logging:** Slf4j
+
+**Testing:** JUnit
+
+**Testing Database:** MockMVC
 ### Notifications Microservices
 
 **Programming Language:** Java with Spring
