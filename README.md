@@ -295,6 +295,100 @@ Attaching to book-mysql, books-service, borrowing-service, customer-postgres, cu
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `int` | **Required**. Id of item to fetch |
 
+## Customers Microservices' endpoint
+
+
+
+#### Get all customers
+
+```http
+  GET localhost:8102/customer-service/api/customers
+```
+
+#### Get one customers
+
+```http
+  GET localhost:8102/customer-service/api/customers{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Create a new customer
+
+```http
+  POST localhost:8102/customer-service/api/customers
+```
+
+#### Update one customer
+
+```http
+  PUT localhost:8102/customer-service/api/customers/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Delete one customer
+
+```http
+  DELETE localhost:8102/customer-service/api/customers/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+## Borrowing Microservices' endpoint
+
+
+
+#### Get all orders
+
+```http
+  GET localhost:8103/borrowing-service/api/borrowing
+```
+
+#### Get one order
+
+```http
+  GET localhost:8103/borrowing-service/api/borrowing{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Create a new order
+
+```http
+  POST localhost:8103/borrowing-service/api/borrowing
+```
+
+#### Update one order
+
+```http
+  PUT localhost:8103/borrowing-service/api/borrowing/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+#### Delete one order
+
+```http
+  DELETE localhost:8103/borrowing-service/api/borrowing/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Required**. Id of item to fetch |
+
+
+
 - To remove the containers you have to run this command and automatically shut down all the instance.
 
 ```
