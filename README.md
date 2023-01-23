@@ -75,6 +75,15 @@ Evaluation criteria:
 - **Logging:** Slf4j
 
 - **Notification:** Kafka
+
+### Relations ###
+
+|                          	| Book                               	| Borrow                                                   	| Customer                  	|
+|--------------------------	|------------------------------------	|----------------------------------------------------------	|---------------------------	|
+| Business<br>Requirements 	| Manage the books                   	| Manage the orders                                        	| Manage the customers      	|
+| Data Entities            	| Books                              	| Borrows                                                  	| Customers                 	|
+| Data<br>Autonomy         	| None                               	| Related to book <br>by ID<br>Related to customer<br>by ID 	| None                      	|
+
 ## Project Tree
 
 Structure of the repository
