@@ -7,7 +7,7 @@ const router = Router()
 // Get all books
 router.get('/books', getBooks)
 
-// Get one books
+// Get one book
 router.get('/books/:id', getBookById)
 
 // Create a new book
