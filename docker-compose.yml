@@ -32,7 +32,7 @@ services:
 
   #BOOK MICROSERVICE
   book-service:
-    image: book-service:latest
+    image: wayde2112/books-service:latest
     container_name: books-service
     ports:
       - "8104:3000"
