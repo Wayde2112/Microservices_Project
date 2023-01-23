@@ -77,7 +77,7 @@ Evaluation criteria:
 - **Notification:** Kafka
 ## Project Tree
 
-To deploy this project run
+Structure of the repository
 
 ```bash
 MICROSERVICES_PROJECT
