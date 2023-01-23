@@ -1,3 +1,4 @@
+[![Build and push microservices](https://github.com/Wayde2112/Microservices_Project/actions/workflows/build.yml/badge.svg)(https://github.com/Wayde2112/Microservices_Project/actions/workflows/build.yml)
 
 # Microservices_Project
 Exam project // ITS Cloud Specialist 2021-23
